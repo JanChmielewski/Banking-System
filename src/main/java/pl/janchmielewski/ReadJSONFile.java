@@ -1,12 +1,12 @@
 package pl.janchmielewski;
 
-import jdk.nashorn.internal.parser.JSONParser;
+import org.json.simple.parser.JSONParser;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.ParseException;
 
 public class ReadJSONFile {
 
