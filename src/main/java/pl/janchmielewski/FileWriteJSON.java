@@ -4,13 +4,18 @@ import org.json.simple.JSONObject;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class FileWriteJSON {
 
     public void createJSONFile() {
+
+        Scanner in = new Scanner(System.in);
+        AccountNumberGenerator generate = new AccountNumberGenerator();
+
         JSONObject obj = new JSONObject();
-        obj.put("name", "Chmielewski Jan");
-        obj.put("account number", "453768076019");
+        obj.put("name", in.nextLine());
+        obj.put("account number", generate.generateAccountNumber(12));
         obj.put("e-mail", "janjerzychmielewski@gmail.com");
         obj.put("phone number", "432267821");
         obj.put("password", "432455478");
