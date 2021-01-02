@@ -2,9 +2,8 @@ package pl.janchmielewski;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayListUsers usersList = new ArrayListUsers();
+        Menu menu = new Menu();
 
-        usersList.usersArrayList();
-
+        menu.menu();
     }
 }
