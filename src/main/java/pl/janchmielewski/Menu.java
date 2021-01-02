@@ -5,9 +5,6 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public Menu() {
-    }
-
     void menu(List<User> users) {
 
         Scanner in = new Scanner(System.in);
