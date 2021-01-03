@@ -31,8 +31,7 @@ public class Menu {
                     System.out.println("What's the full name of the owner of the account?");
                     System.out.println("What's the e-mail address?");
                     System.out.println("What's the phone number?");
-                    System.out.println("Enter password: ");
-                    createUser.userAccountCreator();
+                    System.out.println("What's the password");
                     users.add(createUser.userAccountCreator());
                 break;
                 case "Q":
