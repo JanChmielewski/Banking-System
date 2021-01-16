@@ -14,26 +14,30 @@ public class Menu {
 
             System.out.println("1) Show the users list");
             System.out.println("2) Create new user account");
+            System.out.println("3) Generate user account number");
             System.out.println("(Q)uit");
             System.out.print("Your choice: ");
             choice = in.nextLine();
 
             switch (choice) {
                 case "1":
-                    users.forEach( user -> {
-                        System.out.println("[Name: " + user.getFullName() + " E-mail Address: " + user.getEmailAddress() + " Phone number: " + user.getPhoneNumber() + " Password: " + user.getPassword() + "]");
-                    });
-                break;
+
+                    for (int i = 0; i < users.size(); i++) {
+                        User user = users.get(i);
+                        System.out.println(user);
+                    }
+                    break;
                 case "2":
 
                     CreateUserAccount createUser = new CreateUserAccount();
-
-                    System.out.println("What's the full name of the owner of the account?");
-                    System.out.println("What's the e-mail address?");
-                    System.out.println("What's the phone number?");
-                    System.out.println("What's the password");
                     users.add(createUser.userAccountCreator());
-                break;
+                    break;
+                case "3":
+
+                    AccountGenerator generator = new AccountGenerator();
+
+                    generator.accountGenerator(users);
+                    break;
                 case "Q":
                 case "q":
                     return;

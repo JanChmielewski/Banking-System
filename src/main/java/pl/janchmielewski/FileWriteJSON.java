@@ -15,7 +15,7 @@ public class FileWriteJSON {
 
         JSONObject obj = new JSONObject();
         obj.put("name", in.nextLine());
-        obj.put("account number", generate.generateAccountNumber(12));
+        obj.put("account number", generate.generateAccountNumber());
         obj.put("e-mail", "janjerzychmielewski@gmail.com");
         obj.put("phone number", "432267821");
         obj.put("password", "432455478");

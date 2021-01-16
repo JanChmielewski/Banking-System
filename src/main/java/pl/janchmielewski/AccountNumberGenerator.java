@@ -4,13 +4,18 @@ import java.util.Random;
 
 public class AccountNumberGenerator {
 
-    public static long generateAccountNumber(int length) {
-        Random random = new Random();
-        char[] digits = new char[length];
-        digits[0] = (char) (random.nextInt(9) + '1');
-        for (int i = 1; i < length; i++) {
-            digits[i] = (char) (random.nextInt(10) + '0');
+    public String generateAccountNumber() {
+
+        Random random = new Random(System.currentTimeMillis());
+
+        StringBuilder accountNumber = new StringBuilder();
+
+        for (int i = 0; i < 12; i++) {
+            int number = random.nextInt(10);
+            accountNumber.append(number);
         }
-        return Long.parseLong(new String(digits));
+
+        return accountNumber.toString();
     }
+
 }
