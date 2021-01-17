@@ -6,11 +6,7 @@ import java.util.Scanner;
 
 public class AccountGenerator {
 
-    List<Account> accounts = new ArrayList<>();
-
-    Account account;
-
-    public List<Account> accountGenerator(List<User> users) {
+    public void accountGenerator(List<User> users, AccountDAO accountDAO) {
 
         AccountNumberGenerator accountNumberGenerator = new AccountNumberGenerator();
         Scanner in = new Scanner(System.in);
@@ -28,15 +24,13 @@ public class AccountGenerator {
 
                       String generatedAccountNumber = accountNumberGenerator.generateAccountNumber();
                       user.setAccountNumber(generatedAccountNumber);
-                      account.setAccountNumber(generatedAccountNumber);
+                      Account account = new Account(generatedAccountNumber);
                       System.out.println(generatedAccountNumber);
+                      accountDAO.addAccount(account);
 
                   } else if(!passwordVerification.equals(user.getPassword())) { System.out.println("Wrong password!"); }
               }
         }
 
-
-
-        return accounts;
     }
 }

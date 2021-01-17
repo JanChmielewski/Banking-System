@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    void menu(List<User> users, List<Account> accounts) {
+    void menu(List<User> users, AccountDAO accountDAO) {
 
         Scanner in = new Scanner(System.in);
         String choice = "";
@@ -16,6 +16,7 @@ public class Menu {
             System.out.println("2) Create new user account");
             System.out.println("3) Generate account");
             System.out.println("4) Show the accounts list");
+            System.out.println("5) Remove account");
             System.out.println("(Q)uit");
             System.out.print("Your choice: ");
             choice = in.nextLine();
@@ -37,14 +38,18 @@ public class Menu {
 
                     AccountGenerator generator = new AccountGenerator();
 
-                    generator.accountGenerator(users);
+                    generator.accountGenerator(users, accountDAO);
                     break;
                 case "4":
 
-                    for (int i = 0; i < accounts.size(); i++) {
-                        Account account = accounts.get(i);
+                    for (int i = 0; i < accountDAO.size(); i++) {
+                        Account account = accountDAO.getAccount(i);
                         System.out.println(account);
                     }
+                    break;
+                case "5":
+                    RemoveAccount removeAccount = new RemoveAccount();
+                    removeAccount.accountRemover(users, accountDAO);
                     break;
                 case "Q":
                 case "q":
