@@ -1,13 +1,18 @@
 package pl.janchmielewski;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class AccountGenerator {
 
-    public List<User> accountGenerator(List<User> users) {
+    List<Account> accounts = new ArrayList<>();
 
-        AccountNumberGenerator generator = new AccountNumberGenerator();
+    Account account;
+
+    public List<Account> accountGenerator(List<User> users) {
+
+        AccountNumberGenerator accountNumberGenerator = new AccountNumberGenerator();
         Scanner in = new Scanner(System.in);
 
         System.out.print("Enter user's e-mail address: ");
@@ -21,19 +26,17 @@ public class AccountGenerator {
               if(emailVerification.equals(user.getEmailAddress())) {
                   if(passwordVerification.equals(user.getPassword())) {
 
-                      String generatedAccountNumber = generator.generateAccountNumber();
+                      String generatedAccountNumber = accountNumberGenerator.generateAccountNumber();
                       user.setAccountNumber(generatedAccountNumber);
+                      account.setAccountNumber(generatedAccountNumber);
                       System.out.println(generatedAccountNumber);
 
-                  }
+                  } else if(!passwordVerification.equals(user.getPassword())) { System.out.println("Wrong password!"); }
               }
-
-              if(!emailVerification.equals(user.getEmailAddress())) { System.out.println("Wrong email address!"); }
-
-              if(!passwordVerification.equals(user.getPassword())) { System.out.println("Wrong password!"); }
         }
 
 
-        return users;
+
+        return accounts;
     }
 }
