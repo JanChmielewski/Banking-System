@@ -17,6 +17,7 @@ public class Menu {
             System.out.println("3) Generate account");
             System.out.println("4) Show the accounts list");
             System.out.println("5) Remove account");
+            System.out.println("6) Show Account Balance");
             System.out.println("(Q)uit");
             System.out.print("Your choice: ");
             choice = in.nextLine();
@@ -50,6 +51,10 @@ public class Menu {
                 case "5":
                     RemoveAccount removeAccount = new RemoveAccount();
                     removeAccount.accountRemover(users, accountDAO);
+                    break;
+                case "6":
+                    ShowAccountBalance showAccountBalance = new ShowAccountBalance();
+                    showAccountBalance.showAccountBalance(users, accountDAO);
                     break;
                 case "Q":
                 case "q":
