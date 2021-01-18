@@ -1,4 +1,4 @@
-package pl.janchmielewski;
+package pl.janchmielewski.model;
 
 public class Account {
 

@@ -1,4 +1,6 @@
-package pl.janchmielewski;
+package pl.janchmielewski.service;
+
+import pl.janchmielewski.model.User;
 
 import java.util.Scanner;
 

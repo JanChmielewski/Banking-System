@@ -1,16 +1,24 @@
 package pl.janchmielewski;
 
-import java.util.List;
+import pl.janchmielewski.dao.AccountDAO;
+import pl.janchmielewski.dao.UsersDAO;
+import pl.janchmielewski.model.Account;
+import pl.janchmielewski.model.User;
+import pl.janchmielewski.service.AccountGenerator;
+import pl.janchmielewski.service.CreateUserAccount;
+import pl.janchmielewski.service.RemoveAccount;
+import pl.janchmielewski.service.ShowAccountBalance;
+
 import java.util.Scanner;
 
 public class Menu {
 
-    void menu(List<User> users, AccountDAO accountDAO) {
+    void menu(UsersDAO usersDAO, AccountDAO accountDAO) {
 
         Scanner in = new Scanner(System.in);
         String choice = "";
 
-        while (choice != "Q") {
+        while (!choice.equalsIgnoreCase("q")) {
 
             System.out.println("1) Show the users list");
             System.out.println("2) Create new user account");
@@ -25,24 +33,23 @@ public class Menu {
             switch (choice) {
                 case "1":
 
-                    for (int i = 0; i < users.size(); i++) {
-                        User user = users.get(i);
+                    for (int i = 0; i < usersDAO.size(); i++) {
+                        User user = usersDAO.getUser(i);
                         System.out.println(user);
                     }
                     break;
                 case "2":
 
                     CreateUserAccount createUser = new CreateUserAccount();
-                    users.add(createUser.userAccountCreator());
+                    usersDAO.addUser(createUser.userAccountCreator());
                     break;
                 case "3":
 
                     AccountGenerator generator = new AccountGenerator();
 
-                    generator.accountGenerator(users, accountDAO);
+                    generator.accountGenerator(usersDAO, accountDAO);
                     break;
                 case "4":
-
                     for (int i = 0; i < accountDAO.size(); i++) {
                         Account account = accountDAO.getAccount(i);
                         System.out.println(account);
@@ -50,13 +57,12 @@ public class Menu {
                     break;
                 case "5":
                     RemoveAccount removeAccount = new RemoveAccount();
-                    removeAccount.accountRemover(users, accountDAO);
+                    removeAccount.accountRemover(usersDAO, accountDAO);
                     break;
                 case "6":
                     ShowAccountBalance showAccountBalance = new ShowAccountBalance();
-                    showAccountBalance.showAccountBalance(users, accountDAO);
+                    showAccountBalance.showAccountBalance(usersDAO, accountDAO);
                     break;
-                case "Q":
                 case "q":
                     return;
 

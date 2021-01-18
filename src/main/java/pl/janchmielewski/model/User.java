@@ -1,4 +1,4 @@
-package pl.janchmielewski;
+package pl.janchmielewski.model;
 
 public class User {
     private String fullName, emailAddress, phoneNumber, password, accountNumber;

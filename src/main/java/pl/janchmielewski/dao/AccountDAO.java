@@ -1,4 +1,6 @@
-package pl.janchmielewski;
+package pl.janchmielewski.dao;
+
+import pl.janchmielewski.model.Account;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,5 +21,14 @@ public class AccountDAO {
 
     public Account getAccount(int i) {
         return accounts.get(i);
+    }
+
+    public Account getAccountByNumber(String accountNumber){
+        for (Account account : accounts) {
+            if(account.getAccountNumber().equals(accountNumber)){
+                return account;
+            }
+        }
+        return null;
     }
 }
