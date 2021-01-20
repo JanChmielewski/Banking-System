@@ -1,38 +1,24 @@
 package pl.janchmielewski.service;
 
+import pl.janchmielewski.controller.EmailAndPasswordController;
 import pl.janchmielewski.dao.UsersDAO;
+import pl.janchmielewski.menu.options.MenuOption;
 import pl.janchmielewski.model.User;
 
 import java.util.Scanner;
 
 public class ChangeLoginData {
 
-    public void passwordChanger(UsersDAO users){
-
-        Scanner in = new Scanner(System.in);
-
-        System.out.print("Enter user's e-mail address: ");
-        String emailVerification = in.nextLine();
-        System.out.print("Enter user's password: ");
-        String passwordVerification = in.nextLine();
-
+    public void passwordChanger(UsersDAO users) {
         UserVerifier userVerifier = new UserVerifier();
-        User user = userVerifier.findUser(users, emailVerification, passwordVerification);
+        EmailAndPasswordController emailAndPasswordController = new EmailAndPasswordController();
+        EmailAndPasswordController.UserCredentials userCredentials = emailAndPasswordController.getUserCredentials();
+        User user = userVerifier.findUser(users, userCredentials.getEmail(), userCredentials.getPassword());
         if (user == null) {
-            System.out.println("Invalid login credentials.");
-        } else {
-            System.out.print("Enter new password: ");
-            String newPassword = in.nextLine();
-
-            System.out.print("Confirm new password: ");
-
-            if (newPassword.equals(in.nextLine())) {
-                user.setPassword(newPassword);
-                System.out.println("Password has been changed.");
-            } else {
-                System.out.println("Passwords are not equal.");
-            }
+            throw new RuntimeException("Invalid user credentials");
         }
+        String newPassword = emailAndPasswordController.getUserPasswordWithConfirmation();
+        user.setPassword(newPassword);
     }
 
     public void emailChanger(UsersDAO users) {

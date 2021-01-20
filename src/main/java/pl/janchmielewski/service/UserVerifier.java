@@ -1,5 +1,6 @@
 package pl.janchmielewski.service;
 
+import pl.janchmielewski.controller.EmailAndPasswordController;
 import pl.janchmielewski.dao.UsersDAO;
 import pl.janchmielewski.model.User;
 
@@ -19,4 +20,5 @@ public class UserVerifier {
         }
         return null;
     }
+
 }

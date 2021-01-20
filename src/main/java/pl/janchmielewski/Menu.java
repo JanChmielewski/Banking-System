@@ -2,9 +2,17 @@ package pl.janchmielewski;
 
 import pl.janchmielewski.dao.AccountDAO;
 import pl.janchmielewski.dao.UsersDAO;
+import pl.janchmielewski.menu.options.CreateAccount;
+import pl.janchmielewski.menu.options.LoginOption;
+import pl.janchmielewski.menu.options.ShowUsersOption;
 import pl.janchmielewski.model.Account;
 import pl.janchmielewski.model.User;
-import pl.janchmielewski.service.*;
+import pl.janchmielewski.service.AccountGenerator;
+import pl.janchmielewski.service.ChangeLoginData;
+import pl.janchmielewski.service.CreateUserAccount;
+import pl.janchmielewski.service.RemoveAccount;
+import pl.janchmielewski.service.RemoveUser;
+import pl.janchmielewski.service.ShowAccountBalance;
 
 import java.util.Scanner;
 
@@ -19,6 +27,8 @@ public class Menu {
 
             System.out.println("1) Show the users list");
             System.out.println("2) Create new user account");
+//            System.out.println("3) Login");
+
             System.out.println("3) Generate account");
             System.out.println("4) Show the accounts list");
             System.out.println("5) Remove account");
@@ -64,8 +74,12 @@ public class Menu {
                     showAccountBalance.showAccountBalance(usersDAO, accountDAO);
                     break;
                 case "8":
-                    ChangeLoginData changePassword = new ChangeLoginData();
-                    changePassword.passwordChanger(usersDAO);
+                    try {
+                        ChangeLoginData changePassword = new ChangeLoginData();
+                        changePassword.passwordChanger(usersDAO);
+                    } catch (RuntimeException e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
                 case "9":
                     ChangeLoginData changeEmail = new ChangeLoginData();
