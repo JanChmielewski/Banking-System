@@ -61,7 +61,12 @@ public class Menu {
                     break;
                 case "7":
                     ShowAccountBalance showAccountBalance = new ShowAccountBalance();
-                    showAccountBalance.showAccountBalance(usersDAO, accountDAO);
+                    try {
+                        showAccountBalance.showAccountBalance(usersDAO, accountDAO);
+                    } catch (RuntimeException e) {
+                        System.out.println(e.getMessage());
+                    }
+
                     break;
                 case "8":
                     ChangeLoginData changePassword = new ChangeLoginData();
