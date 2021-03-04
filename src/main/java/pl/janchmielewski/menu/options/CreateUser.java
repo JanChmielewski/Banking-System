@@ -3,19 +3,18 @@ package pl.janchmielewski.menu.options;
 import pl.janchmielewski.dao.AccountDAO;
 import pl.janchmielewski.dao.UsersDAO;
 import pl.janchmielewski.model.User;
-import pl.janchmielewski.service.AccountGenerator;
+import pl.janchmielewski.service.CreateUserAccount;
 
-public class CreateAccount implements  MenuOption {
+public class CreateUser implements MenuOption {
 
     @Override
     public void execute(UsersDAO usersDAO, AccountDAO accountDAO, User user, UsersDAO users) {
-        AccountGenerator accountGenerator = new AccountGenerator();
-        user.setAccountNumber(accountGenerator.accountGenerator(usersDAO, accountDAO));
+        CreateUserAccount createUserAccount = new CreateUserAccount();
+        usersDAO.addUser(createUserAccount.userAccountCreator());
     }
-
 
     @Override
     public String description() {
-        return "Generate Account";
+        return "Create User";
     }
 }

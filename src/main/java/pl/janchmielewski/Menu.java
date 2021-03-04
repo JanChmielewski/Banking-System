@@ -51,14 +51,14 @@ public class Menu {
                         System.out.println(account);
                     }
                     break;
-                case "5":
-                    RemoveAccount removeAccount = new RemoveAccount();
-                    removeAccount.accountRemover(usersDAO, accountDAO);
-                    break;
-                case "6":
-                    RemoveUser removeUser = new RemoveUser();
-                    removeUser.userRemover(usersDAO);
-                    break;
+//                case "5":
+//                    RemoveAccount removeAccount = new RemoveAccount();
+//                    removeAccount.accountRemover(usersDAO, accountDAO, );
+//                    break;
+//                case "6":
+//                    RemoveUser removeUser = new RemoveUser();
+//                    removeUser.userRemover(usersDAO, user);
+//                    break;
                 case "7":
                     ShowAccountBalance showAccountBalance = new ShowAccountBalance();
                     try {

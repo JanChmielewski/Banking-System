@@ -1,5 +1,6 @@
 package pl.janchmielewski.service;
 
+import pl.janchmielewski.controller.EmailAndPasswordController;
 import pl.janchmielewski.dao.AccountDAO;
 import pl.janchmielewski.dao.UsersDAO;
 import pl.janchmielewski.model.Account;
@@ -9,17 +10,10 @@ import java.util.Scanner;
 
 public class RemoveAccount {
 
-    public void accountRemover(UsersDAO users, AccountDAO accountDAO) {
+    public void accountRemover(UsersDAO users, AccountDAO accountDAO, User user) {
 
         Scanner in = new Scanner(System.in);
 
-        System.out.print("Enter user's e-mail address: ");
-        String emailVerification = in.nextLine();
-        System.out.print("Enter user's password: ");
-        String passwordVerification = in.nextLine();
-
-        UserVerifier userVerifier = new UserVerifier();
-        User user = userVerifier.findUser(users, emailVerification, passwordVerification);
         if (user == null) {
             System.out.println("Invalid login credentials.");
         } else {

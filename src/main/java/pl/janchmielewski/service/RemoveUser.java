@@ -1,16 +1,13 @@
 package pl.janchmielewski.service;
 
-import pl.janchmielewski.controller.EmailAndPasswordController;
+import pl.janchmielewski.dao.AccountDAO;
 import pl.janchmielewski.dao.UsersDAO;
 import pl.janchmielewski.model.User;
 
 public class RemoveUser {
 
-    public void userRemover(UsersDAO users) {
+    public void userRemover(UsersDAO usersDAO, AccountDAO accountDAO, User user, UsersDAO users) {
 
-        EmailAndPasswordController emailAndPasswordController = new EmailAndPasswordController();
-        UserVerifier userVerifier = new UserVerifier();
-        User user = userVerifier.findUser(users, emailAndPasswordController.getUserEmail(), emailAndPasswordController.getUserPassword());
         if (user == null) {
             throw new RuntimeException("Invalid login credentials.");
         }
@@ -18,4 +15,5 @@ public class RemoveUser {
         System.out.println("User has been removed.");
 
     }
+
 }
