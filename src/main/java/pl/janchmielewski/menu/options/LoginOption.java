@@ -13,16 +13,18 @@ import pl.janchmielewski.service.UserVerifier;
 public class LoginOption implements MenuOption {
 
     @Override
-    public void execute(UsersDAO usersDAO, AccountDAO accountDAO, User user, UsersDAO users) {
+    public User execute(UsersDAO usersDAO, AccountDAO accountDAO) {
 
         UserVerifier userVerifier = new UserVerifier();
         EmailAndPasswordController emailAndPasswordController = new EmailAndPasswordController();
-        user = userVerifier.findUser(usersDAO, emailAndPasswordController.getUserEmail(), emailAndPasswordController.getUserPassword());
+        User user = userVerifier.findUser(usersDAO, emailAndPasswordController.getUserEmail(), emailAndPasswordController.getUserPassword());
         if (user == null) {
             System.out.println("Invalid login credentials.");
         } else {
-            new LoggedInMenu().showMenu(usersDAO, accountDAO, user, users);
+            new LoggedInMenu().showMenu(usersDAO, accountDAO);
+            System.out.println(usersDAO.loggedUser(usersDAO, accountDAO));
         }
+        return user;
     }
 
     @Override

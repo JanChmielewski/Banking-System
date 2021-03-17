@@ -17,7 +17,7 @@ public class Main {
 //        menu.menu(usersDAO, accountDAO);
 
         AbstractCommandPatternMenu menu1 = new MainMenu();
-        menu1.showMenu(usersDAO, accountDAO, user, users);
+        menu1.showMenu(usersDAO, accountDAO);
 
 
 

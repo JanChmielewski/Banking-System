@@ -6,7 +6,7 @@ import pl.janchmielewski.model.User;
 
 public interface MenuOption {
 
-    void execute(UsersDAO usersDAO, AccountDAO accountDAO, User user, UsersDAO users);
+    User execute(UsersDAO usersDAO, AccountDAO accountDAO);
 
     String description();
 }

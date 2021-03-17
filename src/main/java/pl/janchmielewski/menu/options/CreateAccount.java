@@ -8,9 +8,10 @@ import pl.janchmielewski.service.AccountGenerator;
 public class CreateAccount implements  MenuOption {
 
     @Override
-    public void execute(UsersDAO usersDAO, AccountDAO accountDAO, User user, UsersDAO users) {
+    public User execute(UsersDAO usersDAO, AccountDAO accountDAO) {
         AccountGenerator accountGenerator = new AccountGenerator();
-        user.setAccountNumber(accountGenerator.accountGenerator(usersDAO, accountDAO));
+        usersDAO.loggedUser(usersDAO, accountDAO).setAccountNumber(accountGenerator.accountGenerator(usersDAO, accountDAO));
+        return null;
     }
 
 

@@ -7,13 +7,14 @@ import pl.janchmielewski.service.RemoveUser;
 
 public class RemoveUserOption implements MenuOption{
     @Override
-    public void execute(UsersDAO usersDAO, AccountDAO accountDAO, User user, UsersDAO users) {
+    public User execute(UsersDAO usersDAO, AccountDAO accountDAO) {
         try {
             RemoveUser removeUser = new RemoveUser();
-            removeUser.userRemover(usersDAO, accountDAO, user, users);
+            removeUser.userRemover(usersDAO, accountDAO);
         } catch (RuntimeException e) {
             System.out.println(e.getMessage());
         }
+        return null;
     }
 
     @Override

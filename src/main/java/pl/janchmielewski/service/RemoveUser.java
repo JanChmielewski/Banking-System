@@ -6,12 +6,12 @@ import pl.janchmielewski.model.User;
 
 public class RemoveUser {
 
-    public void userRemover(UsersDAO usersDAO, AccountDAO accountDAO, User user, UsersDAO users) {
+    public void userRemover(UsersDAO usersDAO, AccountDAO accountDAO) {
 
-        if (user == null) {
+        if (usersDAO.loggedUser(usersDAO, accountDAO) == null) {
             throw new RuntimeException("Invalid login credentials.");
         }
-        users.removeUser(user);
+        usersDAO.removeUser(usersDAO.loggedUser(usersDAO, accountDAO));
         System.out.println("User has been removed.");
 
     }

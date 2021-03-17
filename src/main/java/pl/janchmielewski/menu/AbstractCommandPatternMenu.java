@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public abstract class AbstractCommandPatternMenu {
 
-    public void showMenu(UsersDAO usersDAO, AccountDAO accountDAO, User user, UsersDAO users) {
+    public void showMenu(UsersDAO usersDAO, AccountDAO accountDAO) {
         Scanner in = new Scanner(System.in);
 
         while(true) {
@@ -29,7 +29,7 @@ public abstract class AbstractCommandPatternMenu {
             }
             int selectedOption = Integer.parseInt(userInput);
 
-            getOptions().get(selectedOption - 1).execute(usersDAO, accountDAO, user, users); // dodać warunek
+            getOptions().get(selectedOption - 1).execute(usersDAO, accountDAO); // dodać warunek
         }
     }
 

@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class RemoveAccount {
 
-    public void accountRemover(UsersDAO users, AccountDAO accountDAO, User user) {
+    public void accountRemover(AccountDAO accountDAO, User user) {
 
         Scanner in = new Scanner(System.in);
 

@@ -8,9 +8,10 @@ import pl.janchmielewski.service.CreateUserAccount;
 public class CreateUser implements MenuOption {
 
     @Override
-    public void execute(UsersDAO usersDAO, AccountDAO accountDAO, User user, UsersDAO users) {
+    public User execute(UsersDAO usersDAO, AccountDAO accountDAO) {
         CreateUserAccount createUserAccount = new CreateUserAccount();
         usersDAO.addUser(createUserAccount.userAccountCreator());
+        return null;
     }
 
     @Override

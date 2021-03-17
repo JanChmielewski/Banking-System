@@ -1,6 +1,8 @@
 package pl.janchmielewski.dao;
 
+import pl.janchmielewski.menu.options.LoginOption;
 import pl.janchmielewski.model.User;
+import pl.janchmielewski.service.UserVerifier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,12 @@ public class UsersDAO {
 
     public User getUser(int i) {
         return users.get(i);
+    }
+
+    public User loggedUser(UsersDAO usersDAO, AccountDAO accountDAO) {
+        LoginOption loginOption = new LoginOption();
+        User loggedUser = loginOption.execute(usersDAO, accountDAO);
+        return loggedUser;
     }
 
     public List<User> createUsersArrayList() {
