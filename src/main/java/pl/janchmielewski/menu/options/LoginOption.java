@@ -13,7 +13,7 @@ import pl.janchmielewski.service.UserVerifier;
 public class LoginOption implements MenuOption {
 
     @Override
-    public User execute(UsersDAO usersDAO, AccountDAO accountDAO) {
+    public void execute(UsersDAO usersDAO, AccountDAO accountDAO) {
 
         UserVerifier userVerifier = new UserVerifier();
         EmailAndPasswordController emailAndPasswordController = new EmailAndPasswordController();
@@ -21,10 +21,9 @@ public class LoginOption implements MenuOption {
         if (user == null) {
             System.out.println("Invalid login credentials.");
         } else {
+            usersDAO.setUserStatusLogged(user);
             new LoggedInMenu().showMenu(usersDAO, accountDAO);
-            System.out.println(usersDAO.loggedUser(usersDAO, accountDAO));
         }
-        return user;
     }
 
     @Override

@@ -11,6 +11,7 @@ import java.util.List;
 public class UsersDAO {
 
     List<User> users;
+    private User user;
 
     public UsersDAO() {
         users = createUsersArrayList();
@@ -30,12 +31,14 @@ public class UsersDAO {
         return users.get(i);
     }
 
-    public User loggedUser(UsersDAO usersDAO, AccountDAO accountDAO) {
-        LoginOption loginOption = new LoginOption();
-        User loggedUser = loginOption.execute(usersDAO, accountDAO);
-        return loggedUser;
+    public User setUserStatusLogged(User user) {
+        this.user = user;
+        return user;
     }
 
+    public User getLoggedUser(){
+        return user;
+    }
     public List<User> createUsersArrayList() {
 
         List<User> users = new ArrayList<>();

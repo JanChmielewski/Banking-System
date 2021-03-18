@@ -8,11 +8,9 @@ import pl.janchmielewski.service.RemoveAccount;
 
 public class RemoveAccountOption implements MenuOption {
     @Override
-    public User execute(UsersDAO usersDAO, AccountDAO accountDAO) {
+    public void execute(UsersDAO usersDAO, AccountDAO accountDAO) {
         RemoveAccount removeAccount = new RemoveAccount();
-        User user = usersDAO.loggedUser(usersDAO, accountDAO);
-        removeAccount.accountRemover(accountDAO, user);
-        return user;
+        removeAccount.accountRemover(accountDAO, usersDAO.getLoggedUser());
     }
 
     @Override

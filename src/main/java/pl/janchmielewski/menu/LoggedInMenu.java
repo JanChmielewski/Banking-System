@@ -1,6 +1,6 @@
 package pl.janchmielewski.menu;
 
-import pl.janchmielewski.menu.options.CreateAccount;
+import pl.janchmielewski.menu.options.GenerateAccount;
 import pl.janchmielewski.menu.options.MenuOption;
 import pl.janchmielewski.menu.options.RemoveUserOption;
 
@@ -13,7 +13,7 @@ public class LoggedInMenu extends AbstractCommandPatternMenu {
 
     public LoggedInMenu() {
         this.options = new ArrayList<>();
-        options.add(new CreateAccount());
+        options.add(new GenerateAccount());
         options.add(new RemoveAccountOption());
         options.add(new RemoveUserOption());
     }

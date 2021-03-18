@@ -8,10 +8,10 @@ public class RemoveUser {
 
     public void userRemover(UsersDAO usersDAO, AccountDAO accountDAO) {
 
-        if (usersDAO.loggedUser(usersDAO, accountDAO) == null) {
+        if (usersDAO.getLoggedUser() == null) {
             throw new RuntimeException("Invalid login credentials.");
         }
-        usersDAO.removeUser(usersDAO.loggedUser(usersDAO, accountDAO));
+        usersDAO.removeUser(usersDAO.getLoggedUser());
         System.out.println("User has been removed.");
 
     }
