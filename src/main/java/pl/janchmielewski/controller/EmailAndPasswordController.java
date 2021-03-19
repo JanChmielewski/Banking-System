@@ -18,8 +18,8 @@ public class EmailAndPasswordController {
         return passwordVerification;
     }
 
-    public String getUserPasswordWithConfirmation() {
-        System.out.print("Enter user's password: ");
+    public String getNewUserPasswordWithConfirmation() {
+        System.out.print("Enter new user's password: ");
         String passwordVerification = in.nextLine();
 
         System.out.print("Confirm new password: ");
@@ -30,8 +30,8 @@ public class EmailAndPasswordController {
         throw new RuntimeException("Password are not equal.");
     }
 
-    public String getUserEmailWithConfirmation()  {
-        System.out.print("Enter user's email address: ");
+    public String getNewUserEmailWithConfirmation()  {
+        System.out.print("Enter new user's email address: ");
         String emailVerification = in.nextLine();
 
         System.out.print("Confirm new email address: ");

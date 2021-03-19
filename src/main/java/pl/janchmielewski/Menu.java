@@ -70,7 +70,7 @@ public class Menu {
                     break;
                 case "8":
                     ChangeLoginData changePassword = new ChangeLoginData();
-                    changePassword.passwordChanger(usersDAO);
+//                    changePassword.passwordChanger(usersDAO);
                     break;
                 case "9":
                     ChangeLoginData changeEmail = new ChangeLoginData();

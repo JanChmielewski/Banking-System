@@ -7,9 +7,6 @@ import pl.janchmielewski.menu.LoggedInMenu;
 import pl.janchmielewski.model.User;
 import pl.janchmielewski.service.UserVerifier;
 
-// dodać logikę logowania
-// usunąć logikę logowania z pozostałych klas
-
 public class LoginOption implements MenuOption {
 
     @Override

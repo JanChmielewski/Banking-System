@@ -12,19 +12,15 @@ public class ShowAccountBalance {
 
     public void showAccountBalance(UsersDAO usersDAO, AccountDAO accountDAO) {
 
-        EmailAndPasswordController emailAndPasswordController = new EmailAndPasswordController();
-        UserVerifier userVerifier = new UserVerifier();
-        User user = userVerifier.findUser(usersDAO, emailAndPasswordController.getUserEmail(), emailAndPasswordController.getUserPassword());
-
-        if (user == null) {
+        if (usersDAO.getLoggedUser() == null) {
             throw new RuntimeException("Invalid login credentials.");
         }
 
-        if (user.getAccountNumber() == null) {
+        if (usersDAO.getLoggedUser().getAccountNumber() == null) {
             throw new RuntimeException("There is no account assigned to this user.");
         }
 
-        Account account = accountDAO.getAccountByNumber(user.getAccountNumber());
+        Account account = accountDAO.getAccountByNumber(usersDAO.getLoggedUser().getAccountNumber());
         System.out.println("Your account balance: " + account.getBalance());
     }
 }
