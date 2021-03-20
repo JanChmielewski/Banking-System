@@ -4,7 +4,7 @@ import pl.janchmielewski.dao.AccountDAO;
 import pl.janchmielewski.dao.UsersDAO;
 import pl.janchmielewski.service.ShowUsersList;
 
-public class ShowUsersOptions implements MenuOption {
+public class ShowUsersOption implements MenuOption {
 
 
     @Override

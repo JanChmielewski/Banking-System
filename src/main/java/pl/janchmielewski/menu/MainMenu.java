@@ -1,7 +1,5 @@
 package pl.janchmielewski.menu;
 
-import pl.janchmielewski.dao.AccountDAO;
-import pl.janchmielewski.dao.UsersDAO;
 import pl.janchmielewski.menu.options.*;
 
 import java.util.ArrayList;
@@ -13,8 +11,8 @@ public class MainMenu extends AbstractCommandPatternMenu {
 
     public MainMenu() {
         this.options = new ArrayList<>();
-        options.add(new ShowUsersOptions());
-        options.add(new CreateUser());
+        options.add(new ShowUsersOption());
+        options.add(new CreateUserOption());
         options.add(new LoginOption());
     }
 

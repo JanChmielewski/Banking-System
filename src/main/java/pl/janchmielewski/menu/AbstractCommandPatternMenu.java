@@ -28,9 +28,7 @@ public abstract class AbstractCommandPatternMenu {
             }
             int selectedOption = Integer.parseInt(userInput);
 
-            if (selectedOption > getOptions().size()) {
-                System.out.println("Please select correct option");
-            } else if ("0".equals(userInput)) {
+            if (selectedOption > getOptions().size() || "0".equals(userInput)) {
                 System.out.println("Please select correct option");
             } else {
                 getOptions().get(selectedOption - 1).execute(usersDAO, accountDAO);

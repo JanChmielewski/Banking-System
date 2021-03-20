@@ -4,7 +4,7 @@ import pl.janchmielewski.dao.AccountDAO;
 import pl.janchmielewski.dao.UsersDAO;
 import pl.janchmielewski.service.CreateUserAccount;
 
-public class CreateUser implements MenuOption {
+public class CreateUserOption implements MenuOption {
 
     @Override
     public void execute(UsersDAO usersDAO, AccountDAO accountDAO) {

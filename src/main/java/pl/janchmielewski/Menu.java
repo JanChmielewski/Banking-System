@@ -16,18 +16,18 @@ public class Menu {
         String choice = "";
 
         while (!choice.equalsIgnoreCase("q")) {
-
-            System.out.println("1) Show the users list");
-            System.out.println("2) Create new user account");
-            System.out.println("3) Generate account");
+//
+//            System.out.println("1) Show the users list");//
+//            System.out.println("2) Create new user account");//
+//            System.out.println("3) Generate account");//
             System.out.println("4) Show the accounts list");
-            System.out.println("5) Remove account");
-            System.out.println("6) Remove user");
-            System.out.println("7) Show Account Balance");
-            System.out.println("8) Change password");
-            System.out.println("9) Change email address");
-            System.out.println("(Q)uit");
-            System.out.print("Your choice: ");
+//            System.out.println("5) Remove account");//
+//            System.out.println("6) Remove user");//
+//            System.out.println("7) Show Account Balance");//
+//            System.out.println("8) Change password");//
+//            System.out.println("9) Change email address");//
+//            System.out.println("(Q)uit");
+//            System.out.print("Your choice: ");
             choice = in.nextLine();
 
             switch (choice) {
@@ -46,10 +46,7 @@ public class Menu {
                     generator.accountGenerator(usersDAO, accountDAO);
                     break;
                 case "4":
-                    for (int i = 0; i < accountDAO.size(); i++) {
-                        Account account = accountDAO.getAccount(i);
-                        System.out.println(account);
-                    }
+
                     break;
 //                case "5":
 //                    RemoveAccount removeAccount = new RemoveAccount();

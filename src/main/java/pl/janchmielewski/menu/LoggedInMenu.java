@@ -11,6 +11,7 @@ public class LoggedInMenu extends AbstractCommandPatternMenu {
 
     public LoggedInMenu() {
         this.options = new ArrayList<>();
+        options.add(new ShowAccountListOption());
         options.add(new GenerateAccount());
         options.add(new RemoveAccountOption());
         options.add(new RemoveUserOption());
