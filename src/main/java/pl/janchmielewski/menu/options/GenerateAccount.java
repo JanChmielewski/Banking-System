@@ -9,7 +9,7 @@ public class GenerateAccount implements  MenuOption {
     @Override
     public void execute(UsersDAO usersDAO, AccountDAO accountDAO) {
         AccountGenerator accountGenerator = new AccountGenerator();
-        usersDAO.getLoggedUser().setAccountNumber(accountGenerator.accountGenerator(usersDAO, accountDAO));
+        usersDAO.getLoggedUser().setAccountNumber(accountGenerator.accountGenerator(accountDAO));
     }
 
 

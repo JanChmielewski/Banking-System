@@ -7,13 +7,14 @@ import pl.janchmielewski.model.User;
 
 public class AccountGenerator {
 
-    public String accountGenerator(UsersDAO usersDAO, AccountDAO accountDAO) {
+    public String accountGenerator(AccountDAO accountDAO) {
 
         AccountNumberGenerator accountNumberGenerator = new AccountNumberGenerator();
         String generatedAccountNumber = accountNumberGenerator.generateAccountNumber();
         Account account = new Account(generatedAccountNumber);
         accountDAO.addAccount(account);
         System.out.println(generatedAccountNumber);
+
 
         return generatedAccountNumber;
     }

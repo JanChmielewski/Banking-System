@@ -1,8 +1,6 @@
 package pl.janchmielewski.dao;
 
-import pl.janchmielewski.menu.options.LoginOption;
 import pl.janchmielewski.model.User;
-import pl.janchmielewski.service.UserVerifier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,9 +29,8 @@ public class UsersDAO {
         return users.get(i);
     }
 
-    public User setUserStatusLogged(User user) {
+    public void setUserStatusLogged(User user) {
         this.user = user;
-        return user;
     }
 
     public User getLoggedUser(){

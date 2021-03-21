@@ -43,7 +43,7 @@ public class Menu {
                     break;
                 case "3":
                     AccountGenerator generator = new AccountGenerator();
-                    generator.accountGenerator(usersDAO, accountDAO);
+//                    generator.accountGenerator(usersDAO, accountDAO);
                     break;
                 case "4":
 

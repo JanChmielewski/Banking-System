@@ -18,8 +18,5 @@ public class Main {
 
         AbstractCommandPatternMenu menu1 = new MainMenu();
         menu1.showMenu(usersDAO, accountDAO);
-
-
-
     }
 }

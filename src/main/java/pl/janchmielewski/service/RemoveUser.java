@@ -1,12 +1,10 @@
 package pl.janchmielewski.service;
 
-import pl.janchmielewski.dao.AccountDAO;
 import pl.janchmielewski.dao.UsersDAO;
-import pl.janchmielewski.model.User;
 
 public class RemoveUser {
 
-    public void userRemover(UsersDAO usersDAO, AccountDAO accountDAO) {
+    public void userRemover(UsersDAO usersDAO) {
 
         if (usersDAO.getLoggedUser() == null) {
             throw new RuntimeException("Invalid login credentials.");
