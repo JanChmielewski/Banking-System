@@ -12,10 +12,6 @@ public class ShowAccountBalance {
 
     public void showAccountBalance(UsersDAO usersDAO, AccountDAO accountDAO) {
 
-        if (usersDAO.getLoggedUser() == null) {
-            throw new RuntimeException("Invalid login credentials.");
-        }
-
         if (usersDAO.getLoggedUser().getAccountNumber() == null) {
             throw new RuntimeException("There is no account assigned to this user.");
         }

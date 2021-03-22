@@ -8,7 +8,11 @@ public class ShowAccountListOption implements pl.janchmielewski.menu.options.Men
     @Override
     public void execute(UsersDAO usersDAO, AccountDAO accountDAO) {
         ShowAccountList showAccountList = new ShowAccountList();
-        showAccountList.showAccountList(accountDAO);
+        try {
+            showAccountList.showAccountList(accountDAO);
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override

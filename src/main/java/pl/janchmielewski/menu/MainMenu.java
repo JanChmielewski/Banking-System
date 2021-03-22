@@ -1,7 +1,6 @@
 package pl.janchmielewski.menu;
 
 import pl.janchmielewski.menu.options.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
