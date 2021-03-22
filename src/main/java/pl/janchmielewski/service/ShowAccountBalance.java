@@ -17,6 +17,7 @@ public class ShowAccountBalance {
         }
 
         Account account = accountDAO.getAccountByNumber(usersDAO.getLoggedUser().getAccountNumber());
-        System.out.println("Your account balance: " + account.getBalance());
+        UserInterface ui = new UserInterface();
+        ui.showMessage("Your account balance: " + account.getBalance());
     }
 }

@@ -4,14 +4,23 @@ import java.util.Scanner;
 
 public class UserInterface {
 
+    Scanner in = new Scanner(System.in);
+
+
     public String showQuestionGetConfirmation(){
-        Scanner in = new Scanner(System.in);
         showMessage("Are you sure you want to do this? (Y)es/(N)o : ");
-        String confirmation = in.nextLine();
-        return confirmation;
+        return getConfirmation();
     }
 
     public void showMessage(String message) {
         System.out.println(message);
+    }
+
+    public String getConfirmation() {
+        return in.nextLine();
+    }
+
+    public void invalidUserCredentialsMessage(){
+        throw new RuntimeException("Invalid Users Credentials");
     }
 }

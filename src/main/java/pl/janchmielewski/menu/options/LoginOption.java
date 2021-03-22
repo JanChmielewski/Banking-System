@@ -5,6 +5,7 @@ import pl.janchmielewski.dao.AccountDAO;
 import pl.janchmielewski.dao.UsersDAO;
 import pl.janchmielewski.menu.LoggedInMenu;
 import pl.janchmielewski.model.User;
+import pl.janchmielewski.service.UserInterface;
 import pl.janchmielewski.service.UserVerifier;
 
 public class LoginOption implements MenuOption {
@@ -14,12 +15,20 @@ public class LoginOption implements MenuOption {
 
         UserVerifier userVerifier = new UserVerifier();
         EmailAndPasswordController emailAndPasswordController = new EmailAndPasswordController();
+        UserInterface ui = new UserInterface();
+
         User user = userVerifier.findUser(usersDAO, emailAndPasswordController.getUserEmail(), emailAndPasswordController.getUserPassword());
-        if (user == null) {
-            System.out.println("Invalid login credentials.");
-        } else {
-            usersDAO.setUserStatusLogged(user);
-            new LoggedInMenu().showMenu(usersDAO, accountDAO);
+
+        try {
+
+            if (user == null) {
+                ui.invalidUserCredentialsMessage();
+            } else {
+                usersDAO.setUserStatusLogged(user);
+                new LoggedInMenu().showMenu(usersDAO, accountDAO);
+            }
+        } catch (RuntimeException e) {
+            ui.showMessage(e.getMessage());
         }
     }
 

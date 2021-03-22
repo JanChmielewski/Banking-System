@@ -13,7 +13,8 @@ public class AccountGenerator {
         String generatedAccountNumber = accountNumberGenerator.generateAccountNumber();
         Account account = new Account(generatedAccountNumber);
         accountDAO.addAccount(account);
-        System.out.println(generatedAccountNumber);
+        UserInterface ui = new UserInterface();
+        ui.showMessage(generatedAccountNumber);
 
 
         return generatedAccountNumber;
