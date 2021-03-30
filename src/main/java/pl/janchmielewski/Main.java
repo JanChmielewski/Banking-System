@@ -11,12 +11,9 @@ public class Main {
     private static UsersDAO users;
 
     public static void main(String[] args) {
-        Menu menu = new Menu();
-        UsersDAO usersDAO = new UsersDAO();
-        AccountDAO accountDAO = new AccountDAO();
-//        menu.menu(usersDAO, accountDAO);
+        World world = new World();
 
         AbstractCommandPatternMenu menu1 = new MainMenu();
-        menu1.showMenu(usersDAO, accountDAO);
+        menu1.showMenu(world);
     }
 }

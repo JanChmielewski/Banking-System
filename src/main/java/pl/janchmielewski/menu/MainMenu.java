@@ -6,7 +6,7 @@ import java.util.List;
 
 public class MainMenu extends AbstractCommandPatternMenu {
 
-    private List<MenuOption> options;
+    private final List<MenuOption> options;
 
     public MainMenu() {
         this.options = new ArrayList<>();

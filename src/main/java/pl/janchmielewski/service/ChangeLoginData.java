@@ -1,15 +1,16 @@
 package pl.janchmielewski.service;
 
+import pl.janchmielewski.World;
 import pl.janchmielewski.controller.EmailAndPasswordController;
 import pl.janchmielewski.dao.UsersDAO;
 
 public class ChangeLoginData {
 
-    public void passwordChanger(UsersDAO usersDAO) {
+    public void passwordChanger(World world) {
 
         EmailAndPasswordController emailAndPasswordController = new EmailAndPasswordController();
         String newPassword = emailAndPasswordController.getNewUserPasswordWithConfirmation();
-        usersDAO.getLoggedUser().setPassword(newPassword);
+        world.getUsersDAO().getLoggedUser().setPassword(newPassword);
     }
 
     public void emailChanger(UsersDAO usersDAO) {

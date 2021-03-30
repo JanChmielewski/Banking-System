@@ -1,34 +1,31 @@
 package pl.janchmielewski.menu.options;
 
+import pl.janchmielewski.World;
 import pl.janchmielewski.controller.EmailAndPasswordController;
-import pl.janchmielewski.dao.AccountDAO;
-import pl.janchmielewski.dao.UsersDAO;
 import pl.janchmielewski.menu.LoggedInMenu;
 import pl.janchmielewski.model.User;
-import pl.janchmielewski.service.UserInterface;
 import pl.janchmielewski.service.UserVerifier;
 
 public class LoginOption implements MenuOption {
 
     @Override
-    public void execute(UsersDAO usersDAO, AccountDAO accountDAO) {
+    public void execute(World world) {
 
         UserVerifier userVerifier = new UserVerifier();
         EmailAndPasswordController emailAndPasswordController = new EmailAndPasswordController();
-        UserInterface ui = new UserInterface();
 
-        User user = userVerifier.findUser(usersDAO, emailAndPasswordController.getUserEmail(), emailAndPasswordController.getUserPassword());
+        User user = userVerifier.findUser(world.getUsersDAO(), emailAndPasswordController.getUserEmail(), emailAndPasswordController.getUserPassword());
 
         try {
 
             if (user == null) {
-                ui.invalidUserCredentialsMessage();
+                world.getUserInterface().invalidUserCredentialsMessage();
             } else {
-                usersDAO.setUserStatusLogged(user);
-                new LoggedInMenu().showMenu(usersDAO, accountDAO);
+                world.getUsersDAO().setUserStatusLogged(user);
+                new LoggedInMenu().showMenu(world);
             }
         } catch (RuntimeException e) {
-            ui.showMessage(e.getMessage());
+            world.getUserInterface().showMessage(e.getMessage());
         }
     }
 

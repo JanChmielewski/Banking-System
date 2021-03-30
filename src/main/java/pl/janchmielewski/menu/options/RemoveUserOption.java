@@ -1,26 +1,24 @@
 package pl.janchmielewski.menu.options;
 
-import pl.janchmielewski.dao.AccountDAO;
-import pl.janchmielewski.dao.UsersDAO;
+import pl.janchmielewski.World;
+
 import pl.janchmielewski.menu.MainMenu;
 import pl.janchmielewski.service.RemoveUser;
-import pl.janchmielewski.service.UserInterface;
 
 public class RemoveUserOption implements MenuOption {
     @Override
-    public void execute(UsersDAO usersDAO, AccountDAO accountDAO) {
+    public void execute(World world) {
 
-        UserInterface ui = new UserInterface();
 
         try {
             RemoveUser removeUser = new RemoveUser();
-            removeUser.userRemover(usersDAO);
+            removeUser.userRemover(world);
 
         } catch (RuntimeException e) {
-            ui.showMessage(e.getMessage());
+            world.getUserInterface().showMessage(e.getMessage());
         }
 
-        new MainMenu().showMenu(usersDAO, accountDAO);
+        new MainMenu().showMenu(world);
     }
 
     @Override

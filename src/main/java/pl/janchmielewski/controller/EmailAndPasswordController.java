@@ -42,25 +42,4 @@ public class EmailAndPasswordController {
         throw new RuntimeException("Email addresses are not equal.");
     }
 
-    public UserCredentials getUserCredentials() {
-        return new UserCredentials(getUserEmail(), getUserPassword());
-    }
-
-    public static class UserCredentials {
-        private final String email;
-        private final String password;
-
-        public UserCredentials(String email, String password) {
-            this.email = email;
-            this.password = password;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
-        public String getEmail() {
-            return email;
-        }
-    }
 }

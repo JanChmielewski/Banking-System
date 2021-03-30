@@ -1,13 +1,12 @@
 package pl.janchmielewski.service;
 
-import pl.janchmielewski.dao.UsersDAO;
+import pl.janchmielewski.World;
 
 public class RemoveUser {
 
-    public void userRemover(UsersDAO usersDAO) {
-        UserInterface ui = new UserInterface();
-        usersDAO.removeUser(usersDAO.getLoggedUser());
-        ui.showMessage("User has been removed");
+    public void userRemover(World world) {
+        world.getUsersDAO().removeUser(world.getUsersDAO().getLoggedUser());
+        world.getUserInterface().showMessage("User has been removed");
     }
 
 }
