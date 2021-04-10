@@ -24,6 +24,14 @@ public class UI implements UserInterface {
         return in.nextLine();
     }
 
+    public String readAccountNumber() {
+        return getAnswer();
+    }
+
+    public String getAmount() {
+        return getAnswer();
+    }
+
     public String getUsersEmail() {
         return getAnswer();
     }

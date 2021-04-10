@@ -20,4 +20,12 @@ public class MockUI extends UI implements UserInterface {
     public String getUsersPassword() {
         return "ChangedPassword";
     }
+
+    public String readAccountNumber() {
+        return "2";
+    }
+
+    public String getAmount() {
+        return "100.0";
+    }
 }

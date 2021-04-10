@@ -1,6 +1,8 @@
 package pl.janchmielewski.menu;
 
 import pl.janchmielewski.menu.options.*;
+import pl.janchmielewski.service.DepositFunds;
+import pl.janchmielewski.service.MoneyTransfer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +20,8 @@ public class LoggedInMenu extends AbstractCommandPatternMenu {
         options.add(new ShowAccountBalanceOption());
         options.add(new ChangeEmailOption());
         options.add(new ChangePasswordOption());
+        options.add((new MoneyTransferOption()));
+        options.add(new DepositFundsOption());
     }
 
     @Override

@@ -87,4 +87,21 @@ public class UsersOptionsTest {
         }
     }
 
+    @Test
+    public void depositFundsTest() {
+        World world = new World(new MockUI());
+        world.getUsersDAO().addUser(firstTestUser);
+        world.getAccountDAO().addAccount(new Account("1"));
+        firstTestUser.setAccountNumber("1");
+        world.getUsersDAO().addUser(secondTestUser);
+        world.getAccountDAO().addAccount(new Account("2"));
+        secondTestUser.setAccountNumber("2");
+        world.getUsersDAO().addUser(thirdTestUser);
+        world.getAccountDAO().addAccount(new Account("3"));
+        thirdTestUser.setAccountNumber("3");
+        world.getUsersDAO().setUserStatusLogged(firstTestUser);
+        DepositFunds depositFunds = new DepositFunds();
+        depositFunds.depositFunds(world);
+        Assert.assertSame("100.0", world.getAccountDAO().getAccountByNumber(world.getUsersDAO().getLoggedUser().getAccountNumber()).getBalance());
+    }
 }

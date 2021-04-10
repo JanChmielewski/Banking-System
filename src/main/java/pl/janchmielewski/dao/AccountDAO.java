@@ -1,5 +1,6 @@
 package pl.janchmielewski.dao;
 
+import pl.janchmielewski.World;
 import pl.janchmielewski.model.Account;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +26,12 @@ public class AccountDAO {
         return accounts.get(i);
     }
 
-    public Account loggedUsersAccount(Account account) {
-        this.account = account;
-        return account;
+    public Account loggedUsersAccount(World world) {
+        return getAccountByNumber(world.getUsersDAO().getLoggedUser().getAccountNumber());
+    }
+
+    public List<Account> getAccounts() {
+        return accounts;
     }
 
     public Account getLoggedUserAccount() {
