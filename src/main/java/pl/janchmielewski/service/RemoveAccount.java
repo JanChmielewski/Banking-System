@@ -1,23 +1,22 @@
 package pl.janchmielewski.service;
 
-import pl.janchmielewski.dao.AccountDAO;
-import pl.janchmielewski.dao.UsersDAO;
+import pl.janchmielewski.World;
 import pl.janchmielewski.model.Account;
 
 public class RemoveAccount {
 
-    public void accountRemover(AccountDAO accountDAO, UsersDAO usersDAO) {
+    public void accountRemover(World world) {
 
 
-        if (usersDAO.getLoggedUser() != null && usersDAO.getLoggedUser().getAccountNumber() == null) {
+        if (world.getUsersDAO().getLoggedUser() != null && world.getUsersDAO().getLoggedUser().getAccountNumber() == null) {
             throw new RuntimeException("This user have none assigned accounts");
-        } else if (usersDAO.getLoggedUser() != null) {
-            Account account = accountDAO.getAccountByNumber(usersDAO.getLoggedUser().getAccountNumber());
-            UserInterface ui = new UserInterface();
-            String choice = ui.showQuestionGetConfirmation();
+        } else if (world.getUsersDAO().getLoggedUser() != null) {
+            Account account = world.getAccountDAO().getAccountByNumber(world.getUsersDAO().getLoggedUser().getAccountNumber());
+            String choice = world.getUserInterface().showQuestionGetConfirmation();
             if (choice.equalsIgnoreCase("y")) {
-                accountDAO.removeAccount(account);
-                usersDAO.getLoggedUser().setAccountNumber(null);
+                world.getAccountDAO().removeAccount(account);
+                world.getUsersDAO().getLoggedUser().setAccountNumber(null);
+                world.getUserInterface().showMessage("Account has been removed");
             }
         }
     }

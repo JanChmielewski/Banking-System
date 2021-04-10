@@ -10,7 +10,7 @@ public class RemoveAccountOption implements MenuOption {
         RemoveAccount removeAccount = new RemoveAccount();
 
         try {
-            removeAccount.accountRemover(world.getAccountDAO(), world.getUsersDAO());
+            removeAccount.accountRemover(world);
         } catch (RuntimeException e) {
             world.getUserInterface().showMessage(e.getMessage());
         }

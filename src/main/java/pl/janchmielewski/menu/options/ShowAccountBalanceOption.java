@@ -9,7 +9,7 @@ public class ShowAccountBalanceOption implements MenuOption {
         ShowAccountBalance showAccountBalance = new ShowAccountBalance();
 
         try {
-            showAccountBalance.showAccountBalance(world.getUsersDAO(), world.getAccountDAO());
+            showAccountBalance.showAccountBalance(world);
         } catch (RuntimeException e) {
             world.getUserInterface().showMessage(e.getMessage());
         }

@@ -1,7 +1,6 @@
 package pl.janchmielewski.dao;
 
 import pl.janchmielewski.model.Account;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +13,9 @@ public class AccountDAO {
         accounts.add(account);
     }
 
-    public void removeAccount(Account account) { accounts.remove(account); }
+    public void removeAccount(Account account) {
+        accounts.remove(account);
+    }
 
     public int size() {
         return accounts.size();
@@ -33,9 +34,9 @@ public class AccountDAO {
         return account;
     }
 
-    public Account getAccountByNumber(String accountNumber){
+    public Account getAccountByNumber(String accountNumber) {
         for (Account account : accounts) {
-            if(account.getAccountNumber().equals(accountNumber)){
+            if (account.getAccountNumber().equals(accountNumber)) {
                 return account;
             }
         }

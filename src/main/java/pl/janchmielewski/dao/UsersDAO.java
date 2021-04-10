@@ -36,14 +36,13 @@ public class UsersDAO {
     public User getLoggedUser(){
         return user;
     }
+
     public List<User> createUsersArrayList() {
-
         List<User> users = new ArrayList<>();
-        users.add(new User("John Doe", "jd@a.a", "535855675", "a"));
-        users.add(new User("Jan Chmielewski", "janjerzychmielewski@gmail.com", "535855675", "12345678"));
-        users.add(new User("Stefan Czarniecki", "miłystefan@outlook.com", "642333212", "stefanstefan"));
-        users.add(new User("Rozsądny Użytkownik", "r.użytkownik@gmail.com", "321465299", "592mUSK=zg\"z"));
-
         return users;
+    }
+
+    public boolean ifEmpty() {
+        return users.isEmpty();
     }
 }

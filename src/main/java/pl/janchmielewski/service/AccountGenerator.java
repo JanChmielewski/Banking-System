@@ -1,22 +1,19 @@
 package pl.janchmielewski.service;
 
-import pl.janchmielewski.dao.AccountDAO;
-import pl.janchmielewski.dao.UsersDAO;
+import pl.janchmielewski.World;
 import pl.janchmielewski.model.Account;
-import pl.janchmielewski.model.User;
 
 public class AccountGenerator {
 
-    public String accountGenerator(AccountDAO accountDAO) {
+    public String accountGenerator(World world) {
 
         AccountNumberGenerator accountNumberGenerator = new AccountNumberGenerator();
         String generatedAccountNumber = accountNumberGenerator.generateAccountNumber();
         Account account = new Account(generatedAccountNumber);
-        accountDAO.addAccount(account);
-        UserInterface ui = new UserInterface();
-        ui.showMessage(generatedAccountNumber);
-
-
+        world.getAccountDAO().addAccount(account);
+        UI ui = new UI();
+        ui.showMessage("You created account with this number: " + generatedAccountNumber);
+        world.getUsersDAO().getLoggedUser().setAccountNumber(generatedAccountNumber);
         return generatedAccountNumber;
     }
 }

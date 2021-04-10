@@ -1,17 +1,13 @@
 package pl.janchmielewski.menu;
 
 import pl.janchmielewski.World;
-import pl.janchmielewski.dao.AccountDAO;
-import pl.janchmielewski.dao.UsersDAO;
 import pl.janchmielewski.menu.options.MenuOption;
 
 import java.util.List;
-import java.util.Scanner;
 
 public abstract class AbstractCommandPatternMenu {
 
     public void showMenu(World world) {
-        Scanner in = new Scanner(System.in);
 
         while (true) {
             System.out.println();
@@ -23,18 +19,23 @@ public abstract class AbstractCommandPatternMenu {
 
             System.out.printf("Q) %s%n", getBackOption());
             System.out.print("Choice: ");
-            String userInput = in.nextLine().toLowerCase().trim();
+            String userInput = world.getUserInterface().getAnswer().toLowerCase().trim();
+            
             if ("q".equals(userInput)) {
                 break;
             }
-            int selectedOption = Integer.parseInt(userInput);
 
-            if (selectedOption > getOptions().size() || "0".equals(userInput)) {
-                System.out.println("Please select correct option");
-            } else {
-                getOptions().get(selectedOption - 1).execute(world);
+            if (userInput.matches("[A-Z a-z]") || userInput.isEmpty()) {
+
+                int selectedOption = Integer.parseInt(userInput);
+
+                if (selectedOption > getOptions().size() || selectedOption == 0) {
+
+                    System.out.println("Please select correct option");
+                } else {
+                    getOptions().get(selectedOption - 1).execute(world);
+                }
             }
-
         }
     }
 

@@ -8,7 +8,7 @@ public class ShowAccountListOption implements pl.janchmielewski.menu.options.Men
     public void execute(World world) {
         ShowAccountList showAccountList = new ShowAccountList();
         try {
-            showAccountList.showAccountList(world.getAccountDAO());
+            showAccountList.showAccountList(world);
         } catch (RuntimeException e) {
             world.getUserInterface().showMessage(e.getMessage());
         }

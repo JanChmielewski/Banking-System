@@ -1,7 +1,6 @@
 package pl.janchmielewski.menu.options;
 
 import pl.janchmielewski.World;
-import pl.janchmielewski.controller.EmailAndPasswordController;
 import pl.janchmielewski.menu.LoggedInMenu;
 import pl.janchmielewski.model.User;
 import pl.janchmielewski.service.UserVerifier;
@@ -12,9 +11,8 @@ public class LoginOption implements MenuOption {
     public void execute(World world) {
 
         UserVerifier userVerifier = new UserVerifier();
-        EmailAndPasswordController emailAndPasswordController = new EmailAndPasswordController();
 
-        User user = userVerifier.findUser(world.getUsersDAO(), emailAndPasswordController.getUserEmail(), emailAndPasswordController.getUserPassword());
+        User user = userVerifier.findUser(world.getUsersDAO(), world.getUserInterface().LoggingByEmail(), world.getUserInterface().LoggingByPassword());
 
         try {
 

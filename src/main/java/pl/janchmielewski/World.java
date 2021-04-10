@@ -2,28 +2,16 @@ package pl.janchmielewski;
 
 import pl.janchmielewski.dao.AccountDAO;
 import pl.janchmielewski.dao.UsersDAO;
-import pl.janchmielewski.service.UserInterface;
+import pl.janchmielewski.service.UI;
 
 public class World {
 
     AccountDAO accountDAO = new AccountDAO();
     UsersDAO usersDAO = new UsersDAO();
-    UserInterface userInterface = new UserInterface();
+    UI userInterface;
 
-    public World(AccountDAO accountDAO) {
-        this.accountDAO = accountDAO;
-    }
-
-    public World(UserInterface userInterface) {
+    public World(UI userInterface) {
         this.userInterface = userInterface;
-    }
-
-    public World(UsersDAO usersDAO) {
-        this.usersDAO = usersDAO;
-    }
-
-    public World() {
-
     }
 
     public AccountDAO getAccountDAO() {
@@ -34,7 +22,7 @@ public class World {
         return usersDAO;
     }
 
-    public UserInterface getUserInterface() {
+    public UI getUserInterface() {
         return userInterface;
     }
 }

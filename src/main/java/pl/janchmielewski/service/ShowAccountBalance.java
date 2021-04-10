@@ -1,23 +1,18 @@
 package pl.janchmielewski.service;
 
-import pl.janchmielewski.controller.EmailAndPasswordController;
-import pl.janchmielewski.dao.AccountDAO;
-import pl.janchmielewski.dao.UsersDAO;
-import pl.janchmielewski.model.Account;
-import pl.janchmielewski.model.User;
+import pl.janchmielewski.World;
 
-import java.util.Scanner;
+import pl.janchmielewski.model.Account;
 
 public class ShowAccountBalance {
 
-    public void showAccountBalance(UsersDAO usersDAO, AccountDAO accountDAO) {
+    public void showAccountBalance(World world) {
 
-        if (usersDAO.getLoggedUser().getAccountNumber() == null) {
+        if (world.getUsersDAO().getLoggedUser().getAccountNumber() == null) {
             throw new RuntimeException("There is no account assigned to this user.");
         }
 
-        Account account = accountDAO.getAccountByNumber(usersDAO.getLoggedUser().getAccountNumber());
-        UserInterface ui = new UserInterface();
-        ui.showMessage("Your account balance: " + account.getBalance());
+        Account account = world.getAccountDAO().getAccountByNumber(world.getUsersDAO().getLoggedUser().getAccountNumber());
+        world.getUserInterface().showMessage("Your account balance: " + account.getBalance());
     }
 }
