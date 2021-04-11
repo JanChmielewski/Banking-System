@@ -1,15 +1,13 @@
 package pl.janchmielewski.menu;
 
 import pl.janchmielewski.menu.options.*;
-import pl.janchmielewski.service.DepositFunds;
-import pl.janchmielewski.service.MoneyTransfer;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LoggedInMenu extends AbstractCommandPatternMenu {
 
-    private List<MenuOption> options;
+    private final List<MenuOption> options;
 
     public LoggedInMenu() {
         this.options = new ArrayList<>();

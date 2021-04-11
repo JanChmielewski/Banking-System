@@ -1,7 +1,6 @@
 package pl.janchmielewski.service;
 
 import pl.janchmielewski.UserInterface;
-import pl.janchmielewski.World;
 import pl.janchmielewski.model.User;
 import java.util.Scanner;
 
@@ -22,6 +21,11 @@ public class UI implements UserInterface {
     @Override
     public String getAnswer() {
         return in.nextLine();
+    }
+
+    public String forgotPassword(){
+        showMessage("Forgot password? (Y)es/(N)o : ");
+        return getAnswer();
     }
 
     public String readAccountNumber() {
@@ -81,7 +85,7 @@ public class UI implements UserInterface {
 
     public User createUser() {
 
-        String fullName, emailAddress, phoneNumber, password;
+        String fullName, emailAddress, phoneNumber, password, securityQuestionAnswer;
 
         showMessage("What's the full name of the owner of the account?");
         fullName = getAnswer();
@@ -91,8 +95,10 @@ public class UI implements UserInterface {
         phoneNumber = getAnswer();
         showMessage("What's the password");
         password = getAnswer();
+        showMessage("||SECURITY QUESTION|| Who was the patron of your high school?");
+        securityQuestionAnswer = getAnswer();
 
-        User user = new User(fullName, emailAddress, phoneNumber, password);
+        User user = new User(fullName, emailAddress, phoneNumber, password, securityQuestionAnswer);
 
         showMessage("You created user: [Name: " + fullName + "," + " Email Address: " + emailAddress + "," + " Phone number: " + phoneNumber +  "," + " Password: " + password + "]");
 

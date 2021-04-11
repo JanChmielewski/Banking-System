@@ -4,10 +4,11 @@ import pl.janchmielewski.World;
 
 public class ChangeLoginData {
 
-    public void passwordChanger(World world) {
+    public String passwordChanger(World world) {
 
         String newPassword = world.getUserInterface().getNewUserPasswordWithConfirmation();
         world.getUsersDAO().getLoggedUser().setPassword(newPassword);
+        return newPassword;
     }
 
     public void emailChanger(World world) {

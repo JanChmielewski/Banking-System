@@ -8,9 +8,9 @@ import pl.janchmielewski.service.*;
 
 public class UsersOptionsTest {
 
-    User firstTestUser = new User("First User", "FirstTestEmail@test.com", "123456789", "firstTest");
-    User secondTestUser = new User("Second User", "SecondTestEmail@test.com", "123456789", "secondTest");
-    User thirdTestUser = new User("Third User", "ThirdTestEmail@test.com", "123456789", "thirdTest");
+    User firstTestUser = new User("First User", "FirstTestEmail@test.com", "123456789", "firstTest", "First Test Patron");
+    User secondTestUser = new User("Second User", "SecondTestEmail@test.com", "123456789", "secondTest", "Second Test Patron");
+    User thirdTestUser = new User("Third User", "ThirdTestEmail@test.com", "123456789", "thirdTest", "Third Test Patron");
 
 
     @Test
@@ -82,7 +82,7 @@ public class UsersOptionsTest {
         world.getUsersDAO().setUserStatusLogged(firstTestUser);
         RemoveAccount removeAccount = new RemoveAccount();
         removeAccount.accountRemover(world);
-        if (world.getAccountDAO().getAccount(0).getAccountNumber().equals("2") && world.getAccountDAO().getAccount(1).equals("3")) {
+        if (world.getAccountDAO().getAccount(0).getAccountNumber().equals("2") && world.getAccountDAO().getAccount(1).getAccountNumber().equals("3")) {
             Assert.assertEquals(2, world.getAccountDAO().size());
         }
     }
@@ -102,6 +102,28 @@ public class UsersOptionsTest {
         world.getUsersDAO().setUserStatusLogged(firstTestUser);
         DepositFunds depositFunds = new DepositFunds();
         depositFunds.depositFunds(world);
-        Assert.assertSame("100.0", world.getAccountDAO().getAccountByNumber(world.getUsersDAO().getLoggedUser().getAccountNumber()).getBalance());
+        double expectedValue = 100.0;
+        Assert.assertEquals(expectedValue, world.getAccountDAO().getAccountByNumber(world.getUsersDAO().getLoggedUser().getAccountNumber()).getBalance(), 0);
+    }
+
+    @Test
+    public void MoneyTransferTest() {
+        World world = new World(new MockUI());
+        world.getUsersDAO().addUser(firstTestUser);
+        world.getAccountDAO().addAccount(new Account("1"));
+        firstTestUser.setAccountNumber("1");
+        world.getUsersDAO().addUser(secondTestUser);
+        world.getAccountDAO().addAccount(new Account("2"));
+        secondTestUser.setAccountNumber("2");
+        world.getUsersDAO().addUser(thirdTestUser);
+        world.getAccountDAO().addAccount(new Account("3"));
+        thirdTestUser.setAccountNumber("3");
+        world.getUsersDAO().setUserStatusLogged(firstTestUser);
+        DepositFunds depositFunds = new DepositFunds();
+        depositFunds.depositFunds(world);
+        MoneyTransfer moneyTransfer = new MoneyTransfer();
+        moneyTransfer.makeMoneyTransfer(world);
+        Assert.assertEquals(100, world.getAccountDAO().getAccountByNumber("2").getBalance(), 0);
+
     }
 }

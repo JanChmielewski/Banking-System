@@ -19,6 +19,10 @@ public class UsersDAO {
         users.add(user);
     }
 
+    public List<User> getUsers() {
+        return users;
+    }
+
     public void removeUser(User user) { users.remove(user); }
 
     public int size() {
