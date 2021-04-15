@@ -2,6 +2,7 @@ package pl.janchmielewski.service;
 
 import pl.janchmielewski.UserInterface;
 import pl.janchmielewski.model.User;
+
 import java.util.Scanner;
 
 public class UI implements UserInterface {
@@ -23,11 +24,6 @@ public class UI implements UserInterface {
         return in.nextLine();
     }
 
-    public String forgotPassword(){
-        showMessage("Forgot password? (Y)es/(N)o : ");
-        return getAnswer();
-    }
-
     public String readAccountNumber() {
         return getAnswer();
     }
@@ -44,12 +40,16 @@ public class UI implements UserInterface {
         return getAnswer();
     }
 
-    public String LoggingByEmail() {
+    public void securityQuestionMessage() {
+        showMessage("||SECURITY QUESTION|| Who was the patron of your high school?");
+    }
+
+    public String loggingByEmail() {
         showMessage("Enter user's e-mail address: ");
         return getAnswer();
     }
 
-    public String LoggingByPassword() {
+    public String loggingByPassword() {
         showMessage("Enter user's password: ");
         return getAnswer();
     }

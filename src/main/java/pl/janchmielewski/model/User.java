@@ -16,7 +16,6 @@ public class User {
     }
 
     public String getSecurityQuestionAnswer() {
-        System.out.println("Who was the patron of your high school?");
         return securityQuestionAnswer;
     }
 

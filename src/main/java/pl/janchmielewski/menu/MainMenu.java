@@ -1,6 +1,8 @@
 package pl.janchmielewski.menu;
 
 import pl.janchmielewski.menu.options.*;
+import pl.janchmielewski.service.PasswordRecovery;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +15,7 @@ public class MainMenu extends AbstractCommandPatternMenu {
         options.add(new ShowUsersOption());
         options.add(new CreateUserOption());
         options.add(new LoginOption());
+        options.add(new PasswordRecoveryOption());
     }
 
     @Override
